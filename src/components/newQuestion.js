@@ -1,9 +1,11 @@
 import React from 'react'
+import NewQ from '../containers/newQ'
 
 export default function newQuestion() {
     return (
         <div>
-            <p>New Question page </p>
+            <NewQ />
+            <br />
         </div>
     )
 }
