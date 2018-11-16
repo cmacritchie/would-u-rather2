@@ -6,10 +6,18 @@ class LoggedInUser extends Component {
     render() {
         
         if(!this.props.user){     //if it doesn't exist aka null
-            return <p>Log in to get started</p>
+            return <p></p>
         } 
 
-        return <p>{this.props.user.name}</p>
+        return (
+            <div className="inline">
+            <span>
+                <b>Hello {this.props.user.name}</b>
+                <img className="smallImage" src={this.props.user.avatarURL} />
+            </span>
+            </div>
+        
+        )
         
         
     }

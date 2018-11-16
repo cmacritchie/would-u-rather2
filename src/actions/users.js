@@ -15,6 +15,8 @@ export function selectUser(user) {
     //SelectUSer is an actionCreator it needs to retuan an action
     //an object with a type property
 
+    
+
     return{
         type:USER_SELECTED, //need type
         payload: user

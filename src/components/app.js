@@ -9,6 +9,7 @@ import LoggedInUser from '../containers/loggedInUser'
 import { getAllUsers, getAllQuestions } from '../actions/startData'
 // import { connect } from 'http2';
 import {connect} from 'react-redux'
+import QuestionShow from '../components/questionShow'
 
 class App extends Component {
   componentDidMount() {
@@ -22,19 +23,24 @@ class App extends Component {
 <Router>
   <Fragment>
     <Nav />
-      <div>
-        <Route path ='/home' exact component={Home} />
-        <Route path ='/newQuestion' component={newQuestion} />
-        <Route path='/leaderBoard' component ={LeaderBoard} />
-        <Route path='/login' component={Login} />
-        
+      <div>    
+          <Route path ='/home' exact component={Home} />
+          <Route path ='/newQuestion' exact component={newQuestion} />
+          <Route path='/leaderBoard' component ={LeaderBoard} />
+          <Route path='/login' component={Login} />
+          <Route path='/question/:id' component={QuestionShow} />       
       </div>
-    <LoggedInUser />
   </Fragment>
 </Router>
 
     );
   }
 }
+function mapStateToProps(state){
 
-export default connect()(App);
+  return{
+  user: state.activeUser
+  }
+}
+
+export default connect(mapStateToProps)(App);

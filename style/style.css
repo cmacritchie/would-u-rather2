@@ -1,0 +1,52 @@
+img.smallImage {
+    width:35px;
+    height:35px;
+}
+
+img.thumbnail{
+    width:50px;
+    height:50px;
+}
+
+div.inline { float:left; }
+.clearBoth { clear:both; }
+
+.centerborder {
+    margin: auto;
+    width: 50%;
+    border: 2px solid darkblue;
+    padding: 10px;
+}
+
+.center {
+    margin:0 auto;
+}
+
+.service-list {
+list-style-type: none;
+margin-left:0px;
+padding-left:0px;
+display: inline-block;
+}
+
+.userItem img
+{
+float:left;
+}
+
+.userItem p {
+text-align: right; 
+display:inline-block;
+padding: 0;
+}
+
+#answeredQuestion {
+   
+background: #B3D8FF;
+   
+}
+
+.star {
+    color:yellow;
+    font-size: 50px
+}

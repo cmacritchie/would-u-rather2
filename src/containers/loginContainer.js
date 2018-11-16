@@ -35,9 +35,26 @@ export class Login extends Component{
 
     render() {
         return(
-            <ul>
-                {this.renderUserList()}
-            </ul>
+            <div>
+                <br />  
+                       
+                <div className="container centerborder">
+                <h4>Welcome to Would You Rather</h4>
+                <p>please sign in to continue</p> 
+                    <div className="dropdown center">
+                    <button className="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">Select User
+                    <span className="caret"></span></button>
+                        <ul className="dropdown-menu">
+                            {this.renderUserList()}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+
+
+
+            
         )
     }
 }

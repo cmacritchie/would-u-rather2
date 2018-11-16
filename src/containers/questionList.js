@@ -1,55 +1,25 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 class QuestionList extends Component {
-//local state
-constructor(props) {
-    super(props);
-    this.state = {
-        answeredQuestions:[],
-        unAnsweredQuestion:[]
-    }
 
-    //this.sortQuestions()
+state ={
+    redirect:false,
+    questionID: 0,
+    unanswered:true,
 }
 
-// componentDidMount() {
-//     this.sortQuestions()
-// }
+redirect(id){
+    this.setState({
+        questionID:id,
+        redirect:true,
+    });
+}
 
-// sortQuestions() {
-//     return
-//     const userId = this.props.user.id;
-//     const answeredUser = Object.keys(this.props.user.answers)
-//     const questions = this.props.questions;
-
-//     console.log(userId);
-//     console.log(answeredUser);
-//     console.log(questions);
-//     const answered = questions.filter(question => answeredUser.includes(question.id));
-//     const unAnswered = questions.filter(question => !(answeredUser.includes(question.id)));
-
-//     console.log(answered);
-//     console.log(unAnswered);
-
-//     this.renderList(answered);
-//     this.renderList(unAnswered);
-
-//     this.setState({
-//         answeredQuestions:answered,
-//         unAnsweredQuestion:unAnswered
-//     });
-// }
 
 renderList(questions){
 
-    // questions.filter(question => answeredUser[question.id] !== undefined)
-
-     console.log('questions');
-     console.log(questions);
-    // console.log("answers");
-    // console.log(Object.keys(this.props.user.answers));
-     
 
     if(questions.length == 0)
     {
@@ -57,19 +27,35 @@ renderList(questions){
     }
     
     return questions.map((question) =>{
+
         return(
             <li 
+             className ="list-group-item userItem"
+             onClick ={this.redirect.bind(this, question.id)}
+             
              key={question.id}>
-            {question.optionOne.text} or {question.optionTwo.text}
+             <img src={this.props.users.find(user =>user.id === question.author).avatarURL} className="thumbnail" />
+            <b>{question.optionOne.text}</b>
+            <br/>
+            or
+            <br/>
+            <b>{question.optionTwo.text}</b>  
+            
              </li>
 
         )
     })
 }
 
+    listchange() {
+        const listBool = this.state.unanswered;
+        this.setState({unanswered: !listBool});
+    }
+
 
 
     render(){
+        
         const questions = this.props.questions;
         const answeredUser = this.props.user.answers
 
@@ -80,20 +66,38 @@ renderList(questions){
             return (<div>loading</div>)
         }
 
-        return (
-            <div>
-                <h3>AnsweredList</h3>
-                <ul>
-                    {this.renderList(questions.filter(question => answeredUser[question.id] !== undefined))}
-                    
-                </ul>
+        if(this.state.redirect === true){
+            const location = `/question/${this.state.questionID}`;
+            return <Redirect to={location} />
+        }
+
+        
+        if(this.state.unanswered === true)
+        {
+            return(
+            <div className="container centerborder">
+            <button onClick={() => this.listchange()} className="btn">To Answered List</button>
+            <br />
                 <h3>UnansweredList</h3>
-                <ul>
+                <ul className="list-group">
                     {this.renderList(questions.filter(question => answeredUser[question.id] === undefined))}
                 </ul>
             </div>
-                    
             )
+        } else {
+            return(
+            <div className="container centerborder">
+                <button onClick={() => this.listchange()} className="btn">To Unanswered List</button>
+                <br />
+                <h3>AnsweredList</h3>
+                <ul className="list-group">
+                    {this.renderList(questions.filter(question => answeredUser[question.id] !== undefined))}
+                    
+                </ul>
+            </div>
+            )
+        }
+        
     }
 
 }
@@ -101,7 +105,8 @@ renderList(questions){
 function mapStateToProps(state){
     return{
         questions: state.questions,
-        user: state.activeUser
+        user: state.activeUser,
+        users: state.users
     }
 }
 
