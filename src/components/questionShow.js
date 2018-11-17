@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect} from 'react-redux';
 import AnswerQuestion from '../containers/answerQuestion'
 import AlreadyAnswered from '../containers/alreadyAnswered'
+import { Redirect } from 'react-router-dom'
 
 class QuestionShow extends Component {
     // componentDMount() {
@@ -12,6 +13,12 @@ class QuestionShow extends Component {
 
 
     render() {
+
+        if(!this.props.user.hasOwnProperty('id'))
+        {
+            return <Redirect to='/404' />
+        }
+
         const questions = this.props.questions;
         const answeredQuestions = Object.keys(this.props.user.answers);
         const allQustionIds = this.props.questions.map(a =>a.id);

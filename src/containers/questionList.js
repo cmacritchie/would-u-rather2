@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
+
 class QuestionList extends Component {
 
 state ={
@@ -19,14 +20,16 @@ redirect(id){
 
 
 renderList(questions){
-
+    
 
     if(questions.length == 0)
     {
-        return<li>loading</li>
+        return<li>No More Questions!</li>
     }
-    
-    return questions.map((question) =>{
+
+    const sortedQuestions = questions.sort((a,b) =>{ return (b.timestamp - a.timestamp)} )
+
+    return sortedQuestions.map((question) =>{
 
         return(
             <li 
@@ -56,10 +59,15 @@ renderList(questions){
 
     render(){
         
+        console.log(this.props.user.hasOwnProperty('id'));
+
         const questions = this.props.questions;
         const answeredUser = this.props.user.answers
 
-
+        if(!this.props.user.hasOwnProperty('id'))
+        {
+            return <Redirect to='/404' />
+        }
 
         if(!questions || questions.length == 0)
         {
@@ -79,7 +87,7 @@ renderList(questions){
             <button onClick={() => this.listchange()} className="btn">To Answered List</button>
             <br />
                 <h3>UnansweredList</h3>
-                <ul className="list-group">
+                <ul className="list-group cursor">
                     {this.renderList(questions.filter(question => answeredUser[question.id] === undefined))}
                 </ul>
             </div>
@@ -90,7 +98,7 @@ renderList(questions){
                 <button onClick={() => this.listchange()} className="btn">To Unanswered List</button>
                 <br />
                 <h3>AnsweredList</h3>
-                <ul className="list-group">
+                <ul className="list-group cursor">
                     {this.renderList(questions.filter(question => answeredUser[question.id] !== undefined))}
                     
                 </ul>

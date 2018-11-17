@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {selectUser, getAllUsers} from '../actions/users'
 //import * as action from '../actions'
 import {bindActionCreators} from 'redux' //makes sure that action flows through all reducers
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -10,10 +11,14 @@ import {bindActionCreators} from 'redux' //makes sure that action flows through 
 
 export class Login extends Component{
 
-// componentWillMount() {
-//     this.props.dispatch(getAllUsers());
-//     //getUser()
-// }
+    state ={
+        loginRedirect:false,
+    }
+
+selectUserAndTrigger(user) {
+    this.props.selectUser(user)
+    this.setState({loginRedirect:true})
+}
 
 
     renderUserList() {
@@ -25,7 +30,7 @@ export class Login extends Component{
         return this.props.users.map((user) => {
             return (
                 <li 
-                onClick={()=>this.props.selectUser(user)} //this is possible because of mapDispatchtoProps and bindactionCreator 
+                onClick={()=>this.selectUserAndTrigger(user)} //this is possible because of mapDispatchtoProps and bindactionCreator 
                 key={user.name}>
                 {user.name}
                 </li>
@@ -34,6 +39,13 @@ export class Login extends Component{
     }
 
     render() {
+
+
+        if(this.state.loginRedirect ===true)
+        {
+             return <Redirect to='/home' />
+        }
+
         return(
             <div>
                 <br />  
@@ -44,7 +56,7 @@ export class Login extends Component{
                     <div className="dropdown center">
                     <button className="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">Select User
                     <span className="caret"></span></button>
-                        <ul className="dropdown-menu">
+                        <ul className="dropdown-menu cursor">
                             {this.renderUserList()}
                         </ul>
                     </div>

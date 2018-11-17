@@ -1,9 +1,12 @@
 
-import { USER_SELECTED } from '../actions/users'
+import { USER_SELECTED, USER_LOGGEDOFF } from '../actions/users'
 
-export default function(state = null, action) {
+
+export default function(state = {}, action) {
     switch(action.type) {
         case USER_SELECTED:
+            return action.payload;
+        case USER_LOGGEDOFF:
             return action.payload;
     }
 

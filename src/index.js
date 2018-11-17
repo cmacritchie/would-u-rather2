@@ -7,6 +7,8 @@ import middleWare from './middleWare'
 import reduxThunk from 'redux-thunk';
 import App from './components/app';
 import reducers from './reducers';
+import Nav from './components/nav'
+import { BrowserRouter } from "react-router-dom" 
 
 //const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 //const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -19,6 +21,8 @@ import reducers from './reducers';
 ReactDOM.render(
   // <Provider store={createStoreWithMiddleware(reducers)}>
   <Provider store={store}>
+  <BrowserRouter >
     <App />
+    </BrowserRouter >
   </Provider>
   , document.querySelector('.container'));

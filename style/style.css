@@ -8,7 +8,14 @@ img.thumbnail{
     height:50px;
 }
 
+img.thumbnailLarge{
+    width:100px;
+    height:100px;
+}
+
 div.inline { float:left; }
+div.inlineUser{float: right;}
+
 .clearBoth { clear:both; }
 
 .centerborder {
@@ -48,5 +55,40 @@ background: #B3D8FF;
 
 .star {
     color:yellow;
-    font-size: 50px
+    font-size: 25px
+}
+
+.cursor li:hover {
+    background-color: rgb(103, 233, 179);
+    cursor: pointer;
+}
+
+.superpic {
+
+    float:left; 
+    width:25%;
+    padding:5px"
+}
+
+.superList {
+    float:left; 
+    width:50%;
+    padding:5px"
+}
+.rank {
+    float:left; 
+    width:25%;
+    padding:5px"
+}
+
+li.order:nth-child(1){
+    background-color: goldenrod;
+}
+
+li.order:nth-child(2){
+    background-color: silver;
+}
+
+li.order:nth-child(3){
+    background-color: rgb(238, 53, 53);
 }

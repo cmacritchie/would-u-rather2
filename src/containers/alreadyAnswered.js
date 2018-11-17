@@ -16,25 +16,25 @@ class AlreadyAnswered extends Component {
            <li 
              className ="list-group-item userItem "             
              key="optionOne"
-             id ={optionOne.votes.includes(user.id) && "answeredQuestion"}>
+             >
                 <b>{optionOne.text}</b>
                 <br />
                 <p> {Math.floor((voteOne / totalVotes) * 100)}% </p>
                 <br />
                 <p>{voteOne} out of {totalVotes} votes </p>
-                {optionOne.votes.includes(user.id) && <p><span className="glyphicon glyphicon-star star"></span>Your Answer!</p>}
+                {optionOne.votes.includes(user.id) && <b><br/><span className="glyphicon glyphicon-star star"></span>Your Answer!</b>}
              </li>
              
              <li 
              className ="list-group-item userItem"             
              key="optionTwo"
-             id ={optionTwo.votes.includes(user.id) && "answeredQuestion"}>
+             >
              <b>{optionTwo.text}</b>
              <br />
-             {Math.floor((voteTwo / totalVotes) * 100)}%
+             <p>{Math.floor((voteTwo / totalVotes) * 100)}%</p>
              <br />
-             {voteTwo} out of {totalVotes} votes
-             {optionTwo.votes.includes(user.id) && <p><span className="glyphicon glyphicon-star star"></span>Your Answer!</p>}
+             <p>{voteTwo} out of {totalVotes} votes </p>
+                {optionTwo.votes.includes(user.id) && <b><br/><span className="glyphicon glyphicon-star star"></span>Your Answer!</b>}
               
              </li>
 
@@ -51,7 +51,7 @@ class AlreadyAnswered extends Component {
         return(
             <div className="container">
              <h4>Asked By: {this.props.users.find(user =>user.id === this.props.question.author).name}</h4>
-            <img src={this.props.users.find(user =>user.id === this.props.question.author).avatarURL} className="thumbnail" /> 
+            <img src={this.props.users.find(user =>user.id === this.props.question.author).avatarURL} className="thumbnailLarge" /> 
             <br />
             <h3>Results</h3>
             <ul className="list-group">

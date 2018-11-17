@@ -5,12 +5,12 @@ class LoggedInUser extends Component {
     
     render() {
         
-        if(!this.props.user){     //if it doesn't exist aka null
+        if(!this.props.user.hasOwnProperty('id')){     //if it doesn't exist aka null
             return <p></p>
         } 
 
         return (
-            <div className="inline">
+            <div className="inlineUser">
             <span>
                 <b>Hello {this.props.user.name}</b>
                 <img className="smallImage" src={this.props.user.avatarURL} />

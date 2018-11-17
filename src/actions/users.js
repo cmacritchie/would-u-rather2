@@ -1,5 +1,6 @@
 export const FETCH_USERS = 'FETCH_USERS'
 export const USER_SELECTED = 'USER_SELECTED'
+export const USER_LOGGEDOFF = 'USER_LOGGEDOFF'
 import { getUser } from '../../api/API.js'
 
 export function sendUsers(users) {
@@ -39,5 +40,13 @@ export function getAllUsers() {
                     
         });
 
+    }
+}
+
+export function logOut() {
+    debugger;
+    return{
+        type: USER_LOGGEDOFF,
+        payload: {}
     }
 }

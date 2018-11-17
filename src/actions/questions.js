@@ -32,12 +32,9 @@ function sendNewQuestion(newQuestion){
 }
 
 export function answerQuestion(question, user, callback){
-    console.log(user);
-    debugger;
     return(dispatch) => {
         return saveQuestionAnswer(question)
         .then((result) => {
-            debugger;
            
            dispatch(getAllQuestions());
            dispatch(getAllUsers());

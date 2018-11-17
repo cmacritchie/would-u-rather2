@@ -6,6 +6,7 @@ import { createQuestion } from '../actions/questions';
 import { Redirect } from 'react-router-dom'
 
 
+
 class NewQ extends Component {
     state ={
         toHome:false,
@@ -48,6 +49,16 @@ onSubmit(values) {
 
 
     render() {
+
+        
+        if(!this.props.author.hasOwnProperty('id'))
+        {
+            return <Redirect to='/404' />
+        }
+
+
+
+
         const { handleSubmit} = this.props;
 
         if(this.state.toHome === true) {

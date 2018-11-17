@@ -21,13 +21,10 @@ class AnswerQuestion extends Component {
             answer:values.optionChoice
         };
 
-        console.log(question);
-        
         
         this.props.answerQuestion(question, this.props.author, () => {
             
-        //this.setState({toHome:true})
-        debugger;
+       
     });
     }
 
@@ -47,7 +44,7 @@ class AnswerQuestion extends Component {
             <div className="container .centerborder">
                 <form onSubmit = {handleSubmit(this.onSubmit.bind(this))}>
                 <div>
-                <img src={this.props.users.find(user =>user.id === question.author).avatarURL} className="thumbnail" />
+                <img src={this.props.users.find(user =>user.id === question.author).avatarURL} className="thumbnailLarge" />
                 <br />
                 <h4>{this.props.users.find(user =>user.id === question.author).name} Asks: Would You Rather... </h4>
                     <div>

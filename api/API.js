@@ -15,9 +15,9 @@ import {
   export function refreshUser(userID){
     return _getUsers()
     .then(function(users) {
-        debugger;
+        
         const refreshedUser = users[userID];
-        debugger; 
+        
         
     return refreshedUser;
     });
@@ -32,16 +32,12 @@ import {
 
   export function saveQuestion(question){
     return _saveQuestion(question);
-            // .then(function(val) {
-            //     return val;
-            // })
+            
     }
 
 
 export function saveQuestionAnswer(answer){
     return _saveQuestionAnswer(answer);
-            // .then(function(val){
-            //     return val;
-            // })
+            
 }
   

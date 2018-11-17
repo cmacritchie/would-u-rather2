@@ -9,7 +9,7 @@ export default function(state = {}, action) {
         case FETCH_QUESTIONS:
             return action.payload;
         case CREATE_QUESTION:
-            return state.concat(action.payload);
+            return  [ action.payload, ...state ];
     }
 
     return state; 
