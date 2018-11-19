@@ -1,19 +1,21 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'; //need it to recognise state
 
-class LoggedInUser extends Component {
+
+
+const LoggedInUser = ({user}) => {
     
-    render() {
+    
         
-        if(!this.props.user.hasOwnProperty('id')){     //if it doesn't exist aka null
+        if(!user.hasOwnProperty('id')){     
             return <p></p>
         } 
 
         return (
             <div className="inlineUser">
             <span>
-                <b>Hello {this.props.user.name}</b>
-                <img className="smallImage" src={this.props.user.avatarURL} />
+                <b>Hello {user.name}</b>
+                <img className="smallImage" src={user.avatarURL} />
             </span>
             </div>
         
@@ -21,7 +23,6 @@ class LoggedInUser extends Component {
         
         
     }
-}
 
 function mapStateToProps(state){
     return{

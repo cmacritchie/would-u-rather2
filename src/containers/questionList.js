@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
+import LoginContainer from '../containers/loginContainer'
 
 
 class QuestionList extends Component {
@@ -66,7 +67,7 @@ renderList(questions){
 
         if(!this.props.user.hasOwnProperty('id'))
         {
-            return <Redirect to='/404' />
+            return <LoginContainer redirect="/home" noticeMessage="Login First to get to Home Page" />
         }
 
         if(!questions || questions.length == 0)

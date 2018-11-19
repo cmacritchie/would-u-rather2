@@ -43,11 +43,12 @@ selectUserAndTrigger(user) {
 
         if(this.state.loginRedirect ===true)
         {
-             return <Redirect to='/home' />
+             return <Redirect to={this.props.redirect} />
         }
 
         return(
             <div>
+                <h3>{this.props.noticeMessage}</h3>
                 <br />  
                        
                 <div className="container centerborder">
@@ -70,6 +71,12 @@ selectUserAndTrigger(user) {
         )
     }
 }
+
+Login.defaultProps = {
+    redirect : "/home",
+    noticeMessage: ""
+    
+  };
 
 function mapStateToProps(state) {
     //whataever is returned will show up as props in Login

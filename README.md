@@ -14,10 +14,13 @@ To get started Run these commands after cloning the dirctory and navigating into
 > npm install
 > npm start
 ```
+It should also be noted that you must go to http://localhost:8080/ even though on npm install it says to go to 
+ http://localhost:8080/webpack-dev-server/
 
 ### Known Issues
 ```
-1. The first known issue is that that URL does not update upon clicking on different Routes. I've tried numerous times to fix this to no avail; however, typing in the route will take you to the component that you want.
+1.Routing works when you go to http://localhost:8080/ instead of http://localhost:8080/webpack-dev-server/
+despite what it says when you run the project
 ```
 
 ```

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createQuestion } from '../actions/questions';
 //import { withRouter} from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
+import LoginContainer from '../containers/loginContainer'
 
 
 
@@ -53,10 +54,10 @@ onSubmit(values) {
         
         if(!this.props.author.hasOwnProperty('id'))
         {
-            return <Redirect to='/404' />
+            return <LoginContainer redirect="/add" noticeMessage="Login First to add new question" />
         }
 
-
+       
 
 
         const { handleSubmit} = this.props;

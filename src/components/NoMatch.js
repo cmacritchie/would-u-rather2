@@ -10,8 +10,8 @@ export default class App extends Component {
             <h1>ERROR 404</h1>
             <h5>Well... That Didn't work...</h5>
             <br/>
-            <br />
-            <p>If you're trying to see priveleged information, you have to login first</p>
+            <p>Looks like that address doesn't exist</p>
+            <br />        
             <NavLink to="/" activeClassName='active'>
             <h4>Go to Login</h4>
             </NavLink>

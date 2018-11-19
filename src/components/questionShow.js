@@ -3,20 +3,16 @@ import { connect} from 'react-redux';
 import AnswerQuestion from '../containers/answerQuestion'
 import AlreadyAnswered from '../containers/alreadyAnswered'
 import { Redirect } from 'react-router-dom'
+import LoginContainer from '../containers/loginContainer'
 
 class QuestionShow extends Component {
-    // componentDMount() {
-    //     const {id} = this.props.match.params;
-    //     console.log("mounted");
-    //     console.log(id);
-    // }
 
 
     render() {
 
         if(!this.props.user.hasOwnProperty('id'))
         {
-            return <Redirect to='/404' />
+            return <LoginContainer redirect={this.props.location.pathname} noticeMessage="Login First to view question" />
         }
 
         const questions = this.props.questions;

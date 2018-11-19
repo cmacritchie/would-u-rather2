@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import LoginContainer from '../containers/loginContainer';
 
 
 const LeaderBoard = ({users, user}) => {
     
     if(!user.hasOwnProperty('id'))
         {
-            return <Redirect to='/404' />
+            return <LoginContainer redirect="/leaderboard" noticeMessage="Login First to get to Leaderboard" />
         }
     
     const calcUserScore = users.map(user =>{ 

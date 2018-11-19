@@ -44,7 +44,6 @@ export function getAllUsers() {
 }
 
 export function logOut() {
-    debugger;
     return{
         type: USER_LOGGEDOFF,
         payload: {}
