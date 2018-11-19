@@ -4,9 +4,11 @@ import AnswerQuestion from '../containers/answerQuestion'
 import AlreadyAnswered from '../containers/alreadyAnswered'
 import { Redirect } from 'react-router-dom'
 import LoginContainer from '../containers/loginContainer'
+import NoMatch from '../components/NoMatch'
+import { getAllQuestions } from '../actions/startData'
 
 class QuestionShow extends Component {
-
+   
 
     render() {
 
@@ -52,12 +54,9 @@ class QuestionShow extends Component {
         }
 
 
-
-
-
         return(
             <div>
-                QuestionShow
+                <NoMatch />
             </div>
         )
     }
